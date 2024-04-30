@@ -11,7 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+##
+from django.templatetags.static import static
+from environs import Env
+import os
 
+# for environments variables
+env = Env()
+env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +31,7 @@ SECRET_KEY = 'django-insecure-&lf-ames1=ban)1o%$^pyjc9zx#%qc*^sm-8q+g24k4$ty8k8o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
 
 # Application definition
 
@@ -38,6 +45,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'pages',
+    'products',
     'crispy_bootstrap5',
     'crispy_forms',
 
@@ -132,6 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
