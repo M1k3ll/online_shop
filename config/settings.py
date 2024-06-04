@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'products',
     'crispy_bootstrap5',
     'crispy_forms',
+    'cart',
 
     'allauth',
     'allauth.account',
+    'rosetta',
 
 ]
 SITE_ID = 1
@@ -128,19 +130,24 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+# TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'fa-ir'
+TIME_ZONE = 'Asia/Tehran'
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
+LANGUAGES = (
+    ('en', 'English'),
+    ('fa', 'persian'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

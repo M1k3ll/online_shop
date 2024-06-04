@@ -1,10 +1,20 @@
 # from django.core.checks import messages
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 
+from cart.forms import AddToCartProductForm
 from products.models import Product, Comment
 from .forms import CommentForm
+
+
+# def test_messages(request):
+#     result = "hello"
+#     messages.success(request, 'this is the success messages')
+#     messages.warning(request, 'this is success message')
+#
+#     return render(request,'products/testmessage.html')
 
 
 class ProductListView(generic.ListView):  # class base view #CBV
@@ -22,6 +32,7 @@ class ProductDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comment_form'] = CommentForm()
+        context['add_to_cart_form'] = AddToCartProductForm()
         return context
 
 
